@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function isLeapYear(year) {
+    // Xác định năm nhuận
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+  }
+
+  function daysInMonth(month, year) {
+    // Kiểm tra số ngày trong tháng
+    switch (month) {
+      case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+        return 31;
+      case 4: case 6: case 9: case 11:
+        return 30;
+      case 2:
+        return isLeapYear(year) ? 29 : 28;
+      default:
+        return 0; // Tháng không hợp lệ
+    }
+  }
+
+  function getDaysFromInput(input) {
+    // Tách thông tin từ định dạng MM/yyyy
+    const [month, year] = input.split("/").map(Number);
+
+    if (month < 1 || month > 12 || year < 1) {
+      return "Dữ liệu không hợp lệ! Vui lòng nhập theo định dạng MM/yyyy.";
+    }
+
+    const days = daysInMonth(month, year);
+    return `Tháng ${month}/${year} có ${days} ngày.`;
+  }
+
+  // Nhập dữ liệu từ người dùng
+  const userInput = prompt("Nhập tháng và năm theo định dạng MM/yyyy (ví dụ: 02/2020):");
+
+  if (userInput) {
+    const result = getDaysFromInput(userInput);
+    alert(result); // Hiển thị kết quả
+  } else {
+    alert("Bạn chưa nhập dữ liệu!");
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 2</title>
+</head>
+<body>
+<h2>Kiểm tra số hoàn hảo</h2>
+<label for="numberInput">Nhập một số nguyên dương:</label>
+<input id="numberInput" min="1" type="number"/>
+<button onclick="checkPerfectNumber()">Kiểm tra</button>
+<div id="result"></div>
+
+<script>
+    // Hàm kiểm tra số hoàn hảo
+    function isPerfectNumber(number) {
+        let sum = 0;
+        for (let i = 1; i <= number/2; i++) {
+            if (number % i === 0) {
+                sum += i;
+            }
+        }
+        return sum === number; // Kiểm tra tổng các ước có bằng chính số đó hay không
+    }
+
+
+    function checkPerfectNumber() {
+        const input = document.getElementById('numberInput').value;
+        const number = parseInt(input);
+        const result = document.getElementById('result');
+
+        if (isNaN(number) || number <= 0) {
+            result.innerHTML = `<p>Vui lòng nhập một số nguyên dương hợp lệ!</p>`;
+            return;
+        }
+
+        const isPerfect = isPerfectNumber(number);
+        if (isPerfect) {
+            result.innerHTML = `<p style="color: green;">Số ${number} là số hoàn hảo!</p>`;
+        } else {
+            result.innerHTML = `<p>Số ${number} không phải là số hoàn hảo!</p>`;
+        }
+    }
+</script>
+</body>
+</html>

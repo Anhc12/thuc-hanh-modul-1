@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 1</title>
+</head>
+<body>
+<script>
+    // Khởi tạo một mảng số nguyên
+    let arr = [3, 5, 9, 12, 6, 21, 11, 10];
+
+    function averageByThree(array) {
+        let sum = 0;
+        let count = 0;
+
+        if (arr.length > 50) {
+            console.log("ĐỘ dài của mảng không được vượt quá 50")
+            return;
+        }
+
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 3 === 0) { // Kiểm tra số chia hết cho 3
+                sum += array[i];
+                count++;
+            }
+        }
+
+
+        if (count === 0) {
+            console.log("Không có số nào trong mảng chia hết cho 3.");
+            return;
+        }
+
+        // Tính trung bình cộng
+        let average = sum / count;
+        console.log("Trung bình cộng các số chia hết cho 3 là:", average);
+    }
+
+    // Gọi hàm để tính toán
+    averageByThree(arr);
+
+</script>
+</body>
+</html>
